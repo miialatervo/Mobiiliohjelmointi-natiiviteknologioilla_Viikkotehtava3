@@ -22,7 +22,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LoginScreen()
+            // Wrap LoginScreen in MaterialTheme for consistency with Material3 design
+            MaterialTheme {
+                LoginScreen()
+            }
         }
     }
 }
@@ -35,7 +38,7 @@ fun LoginScreen() {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()  // Use fillMaxWidth instead of fillMaxSize for compact layout
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -95,5 +98,8 @@ fun LoginScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewLoginScreen() {
-    LoginScreen()
+    // Apply MaterialTheme in preview as well
+    MaterialTheme {
+        LoginScreen()
+    }
 }
